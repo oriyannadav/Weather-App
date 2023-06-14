@@ -105,8 +105,6 @@ def find_min(weather_data):
         return (min_value, max_index)
     else:
         return ()
-
-
     """Calculates the minimum value in a list of numbers.
 
     Args:
@@ -153,8 +151,6 @@ def find_max(weather_data):
         return (max_value, max_index)
     else:
         return ()
-
-
     """Calculates the maximum value in a list of numbers.
 
     Args:
