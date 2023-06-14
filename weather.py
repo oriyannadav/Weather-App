@@ -1,10 +1,11 @@
 import csv
-from datetime import datetime
+from datetime import datetime as dt
 
 DEGREE_SYBMOL = u"\N{DEGREE SIGN}C"
 
 
 def format_temperature(temp):
+    temp = str(temp)
     """Takes a temperature and returns it in string format with the degrees
         and celcius symbols.
 
@@ -17,6 +18,10 @@ def format_temperature(temp):
 
 
 def convert_date(iso_string):
+    import datetime as dt
+    date_string = dt.datetime.strptime(iso_string, '%Y-%m-%dT07:00:00+08:00')
+    date_object = date_string.strftime("%A %d %B %Y")
+    return date_object
     """Converts and ISO formatted date into a human readable format.
 
     Args:
@@ -48,7 +53,6 @@ def calculate_mean(weather_data):
     number_of_items = len(weather_data)
     mean_value = total / number_of_items
     return mean_value
-
     """Calculates the mean value from a list of numbers.
 
     Args:
@@ -86,7 +90,6 @@ def find_min(weather_data):
     #     return (min_value, max_index)
     # else:
     #     return ()
-
     weather_data_new = []
     for temp in weather_data:
         weather_data_new.append(float(temp))
@@ -131,8 +134,6 @@ def find_max(weather_data):
     #     return (max_value, max_index)
     # else:
     #     return ()
-
-
     weather_data_new = []
     for temp in weather_data:
         weather_data_new.append(float(temp))
