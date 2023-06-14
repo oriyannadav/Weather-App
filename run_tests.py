@@ -1,5 +1,5 @@
-import warnings
-warnings.filterwarnings("ignore", category =DeprecationWarning)
+# import warnings
+# warnings.filterwarnings("ignore", category =DeprecationWarning)
 
 import unittest
 from tests.test_convert_date import ConvertDateTests
