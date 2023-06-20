@@ -1,11 +1,10 @@
 import csv
-from datetime import datetime as dt
+from datetime import datetime
 
 DEGREE_SYBMOL = u"\N{DEGREE SIGN}C"
 
 
 def format_temperature(temp):
-    temp = str(temp)
     """Takes a temperature and returns it in string format with the degrees
         and celcius symbols.
 
@@ -63,7 +62,20 @@ def calculate_mean(weather_data):
     pass
 
 
-def load_data_from_csv(csv_file):
+def load_data_from_csv(csv_file): 
+    with open(csv_file) as file:
+        reader = csv.reader(file, delimiter = ",")
+        next(reader)
+        big_list = []
+        for row in reader:
+            if row:
+                str1 = str(row[0])
+                int1 = int(row[1]) 
+                int2 = int(row[2])
+                small_list = [str1, int1, int2]
+                big_list.append(small_list)
+        return big_list
+
     """Reads a csv file and stores the data in a list.
 
     Args:
@@ -75,21 +87,6 @@ def load_data_from_csv(csv_file):
 
 
 def find_min(weather_data):
-    # if len(weather_data) > 0:
-    #     min_value = float(min(weather_data))
-    #     list_indices = []
-    #     list_len = len(weather_data)
-    #     sequence = range(list_len)
-    #     for index in sequence:
-    #         if weather_data[index] == min_value:
-    #             list_indices.append(index)
-    #     if len(list_indices) > 0:
-    #         max_index = max(list_indices)
-    #     else:
-    #         max_index = weather_data.index(min(weather_data))
-    #     return (min_value, max_index)
-    # else:
-    #     return ()
     weather_data_new = []
     for temp in weather_data:
         weather_data_new.append(float(temp))
@@ -119,21 +116,6 @@ def find_min(weather_data):
 
 
 def find_max(weather_data):
-    # if len(weather_data) > 0:
-    #     max_value = float(max(weather_data))
-    #     list_indices = []
-    #     list_len = len(weather_data)
-    #     sequence = range(list_len)
-    #     for index_position in sequence:
-    #         if weather_data[index_position] == max_value:
-    #             return list_indices.append(index_position)
-    #     if len(list_indices) > 0:
-    #         max_index = max(list_indices)
-    #     else:
-    #         max_index = weather_data.index(max(weather_data))
-    #     return (max_value, max_index)
-    # else:
-    #     return ()
     weather_data_new = []
     for temp in weather_data:
         weather_data_new.append(float(temp))
