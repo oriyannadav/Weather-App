@@ -192,6 +192,23 @@ def generate_summary(weather_data):
 
 
 def generate_daily_summary(weather_data):
+    import datetime as dt
+    daily_summaries = []
+    for daily_summary in weather_data:
+        if daily_summary:
+            date_string = dt.datetime.strptime(daily_summary[0], '%Y-%m-%dT07:00:00+08:00')
+            date = date_string.strftime("%A %d %B %Y")
+            low_temp = float(daily_summary[1])
+            low_temp_c = float((float(low_temp) - 32) * (5/9))
+            low_temp_c = round(low_temp_c, 1)
+            high_temp = float(daily_summary[2])
+            high_temp_c = float((float(high_temp) - 32) * (5/9))
+            high_temp_c = round(high_temp_c, 1)
+            daily_summary_str = f"---- {date} ----\n  Minimum Temperature: {low_temp_c}{DEGREE_SYBMOL}\n  Maximum Temperature: {high_temp_c}{DEGREE_SYBMOL}\n\n"
+            daily_summaries.append(daily_summary_str)
+        else:
+            daily_summaries.append("\n")
+    return ''.join(daily_summaries)
     """Outputs a daily summary for the given weather data.
 
     Args:
