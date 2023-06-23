@@ -5,6 +5,7 @@ DEGREE_SYBMOL = u"\N{DEGREE SIGN}C"
 
 
 def format_temperature(temp):
+    temp = str(temp)
     """Takes a temperature and returns it in string format with the degrees
         and celcius symbols.
 
@@ -145,6 +146,41 @@ def find_max(weather_data):
 
 
 def generate_summary(weather_data):
+    import datetime as dt
+    min_temp = []
+    max_temp = []
+    days = len(weather_data)
+    for summary in weather_data:
+        min_temp.append(float(summary[1]))
+        lowest_temp = float(min(min_temp))
+        lowest_temp_c = float((float(lowest_temp) - 32) * (5/9))
+        lowest_temp_c = round(lowest_temp_c, 1)
+        if lowest_temp in summary:
+            date_string = dt.datetime.strptime(summary[0], '%Y-%m-%dT07:00:00+08:00')
+            lowest_temp_date = date_string.strftime("%A %d %B %Y")
+        max_temp.append(float(summary[2]))
+        highest_temp = float(max(max_temp))
+        highest_temp_c = float((float(highest_temp) - 32) * (5/9))
+        highest_temp_c = round(highest_temp_c, 1)
+        if highest_temp in summary:
+            date_string = dt.datetime.strptime(summary[0], '%Y-%m-%dT07:00:00+08:00')
+            highest_temp_date = date_string.strftime("%A %d %B %Y")
+        min_total = 0
+        for temp in min_temp:
+            min_total = min_total + float(temp)
+        number_of_items = len(min_temp)
+        average_lowest_temp = min_total / number_of_items
+        average_lowest_temp_c = float((float(average_lowest_temp) - 32) * (5/9))
+        average_lowest_temp_c = round(average_lowest_temp_c, 1)
+        max_total = 0
+        for temp in max_temp:
+            max_total = max_total + float(temp)
+        number_of_items = len(max_temp)
+        average_highest_temp = max_total / number_of_items
+        average_highest_temp_c = float((float(average_highest_temp) - 32) * (5/9))
+        average_highest_temp_c = round(average_highest_temp_c, 1)
+    return f"{days} Day Overview\n  The lowest temperature will be {lowest_temp_c}{DEGREE_SYBMOL}, and will occur on {lowest_temp_date}.\n  The highest temperature will be {highest_temp_c}{DEGREE_SYBMOL}, and will occur on {highest_temp_date}.\n  The average low this week is {average_lowest_temp_c}{DEGREE_SYBMOL}.\n  The average high this week is {average_highest_temp_c}{DEGREE_SYBMOL}."
+
     """Outputs a summary for the given weather data.
 
     Args:
