@@ -6,6 +6,7 @@ DEGREE_SYBMOL = u"\N{DEGREE SIGN}C"
 
 def format_temperature(temp):
     temp = str(temp)
+    return f"{temp}{DEGREE_SYBMOL}"
     """Takes a temperature and returns it in string format with the degrees
         and celcius symbols.
 
@@ -14,7 +15,6 @@ def format_temperature(temp):
     Returns:
         A string contain the temperature and "degrees celcius."
     """
-    return f"{temp}{DEGREE_SYBMOL}"
 
 
 def convert_date(iso_string):
