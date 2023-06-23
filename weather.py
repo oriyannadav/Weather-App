@@ -70,10 +70,10 @@ def load_data_from_csv(csv_file):
         big_list = []
         for row in reader:
             if row:
-                str1 = str(row[0])
-                int1 = int(row[1]) 
-                int2 = int(row[2])
-                small_list = [str1, int1, int2]
+                date = str(row[0])
+                low_temp = int(row[1]) 
+                high_temp = int(row[2])
+                small_list = [date, low_temp, high_temp]
                 big_list.append(small_list)
         return big_list
 
