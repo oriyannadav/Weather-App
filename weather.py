@@ -179,7 +179,7 @@ def generate_summary(weather_data):
         average_highest_temp = max_total / number_of_items
         average_highest_temp_c = float((float(average_highest_temp) - 32) * (5/9))
         average_highest_temp_c = round(average_highest_temp_c, 1)
-    return f"{days} Day Overview\n  The lowest temperature will be {lowest_temp_c}{DEGREE_SYBMOL}, and will occur on {lowest_temp_date}.\n  The highest temperature will be {highest_temp_c}{DEGREE_SYBMOL}, and will occur on {highest_temp_date}.\n  The average low this week is {average_lowest_temp_c}{DEGREE_SYBMOL}.\n  The average high this week is {average_highest_temp_c}{DEGREE_SYBMOL}."
+    return f"{days} Day Overview\n  The lowest temperature will be {lowest_temp_c}{DEGREE_SYBMOL}, and will occur on {lowest_temp_date}.\n  The highest temperature will be {highest_temp_c}{DEGREE_SYBMOL}, and will occur on {highest_temp_date}.\n  The average low this week is {average_lowest_temp_c}{DEGREE_SYBMOL}.\n  The average high this week is {average_highest_temp_c}{DEGREE_SYBMOL}.\n"
 
     """Outputs a summary for the given weather data.
 
