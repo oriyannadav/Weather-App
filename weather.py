@@ -76,7 +76,6 @@ def load_data_from_csv(csv_file):
                 small_list = [date, low_temp, high_temp]
                 big_list.append(small_list)
         return big_list
-
     """Reads a csv file and stores the data in a list.
 
     Args:
@@ -180,7 +179,6 @@ def generate_summary(weather_data):
         average_highest_temp_c = float((float(average_highest_temp) - 32) * (5/9))
         average_highest_temp_c = round(average_highest_temp_c, 1)
     return f"{days} Day Overview\n  The lowest temperature will be {lowest_temp_c}{DEGREE_SYBMOL}, and will occur on {lowest_temp_date}.\n  The highest temperature will be {highest_temp_c}{DEGREE_SYBMOL}, and will occur on {highest_temp_date}.\n  The average low this week is {average_lowest_temp_c}{DEGREE_SYBMOL}.\n  The average high this week is {average_highest_temp_c}{DEGREE_SYBMOL}.\n"
-
     """Outputs a summary for the given weather data.
 
     Args:
